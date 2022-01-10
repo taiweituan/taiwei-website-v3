@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  web-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # The new volumes key mounts the project directory (current directory) on the host
+    # to /code inside the container, allowing you to modify the code on the fly,
+    # without having to rebuild the image
+    volumes:
+      - .:/usr/src/app
+      # Without the anonymous volume ('/app/node_modules'), the node_modules directory
+      # would be overwritten by the mounting of the host directory at runtime
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000

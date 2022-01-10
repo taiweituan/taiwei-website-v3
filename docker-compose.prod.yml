@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  web-ui-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    # The new volumes key mounts the project directory (current directory) on the host
+    # to /code inside the container, allowing you to modify the code on the fly,
+    # without having to rebuild the image
+    ports:
+      - 7070:80

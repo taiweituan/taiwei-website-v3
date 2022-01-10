@@ -6,7 +6,7 @@ export default function Intro() {
       <div className="col-xs-6">
         <h1>Taiwei from Taiwan</h1>
         <div className="profile-pic"></div>
-        <img src="~/src/assets/profile-pic.jpeg" alt="test" />
+        {/* <img src="~/src/assets/profile-pic.jpeg" alt="test" /> */}
         <p>A web developer and probably a video game addic</p>
       </div>
     </Container>
