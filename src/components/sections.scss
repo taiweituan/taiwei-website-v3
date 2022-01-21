@@ -6,4 +6,19 @@
     height: 300px;
     // background-image: url("./assets/profile-pic.jpeg");
   }
+  .blinking-cursor {
+    &:after {
+      content: '|';
+      font-weight: 300;
+      font-size: 1.3rem;
+      color: aquamarine;
+      animation: blink 1s step-start infinite;
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+    }
+  }
 }

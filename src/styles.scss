@@ -1,5 +1,9 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
-@import "./components/sections";
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import './components/sections';
+
+:root {
+  font-size: 16px;
+}
 
 .App {
   font-family: sans-serif;
