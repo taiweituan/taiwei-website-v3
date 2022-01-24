@@ -1,6 +1,6 @@
 import { Container, Navbar, Nav } from 'react-bootstrap'
 
-export default function MyNavbar() {
+export default function MyNavbar(): JSX.Element {
   return (
     <Navbar bg="light" variant="light">
       <Container>
