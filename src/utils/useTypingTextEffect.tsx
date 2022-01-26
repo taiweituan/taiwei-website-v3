@@ -1,20 +1,38 @@
 import { useEffect, useState } from 'react'
 
 export const useTypingTextEffect = (sentences: string[]): string => {
-  const [typeText, setTypeText] = useState<string>('')
-  useEffect(() => {
-    const nextTextToType = sentences[0].slice(0, typeText.length + 1)
+  const [accumulatedSentence, setAccumulatedSentence] = useState<string>('')
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0)
 
-    if (nextTextToType === typeText) return
+  useEffect(() => {
+    if (currentIndex === sentences.length) return
+
+    const currentSetence = sentences[currentIndex]
+    const nextCharToType = currentSetence[currentSentenceIndex]
 
     const timeout = setTimeout(() => {
-      setTypeText(nextTextToType)
-    }, 200)
+      const isEndOfSentenceReached =
+        currentSentenceIndex === currentSetence.length - 1
+      const isEndReached =
+        isEndOfSentenceReached && currentIndex + 1 === sentences.length
+
+      if (isEndOfSentenceReached) {
+        setAccumulatedSentence(
+          `${accumulatedSentence}${nextCharToType}${isEndReached ? '' : '\n'}`,
+        )
+        setCurrentIndex(currentIndex + 1)
+        setCurrentSentenceIndex(0)
+      } else {
+        setAccumulatedSentence(`${accumulatedSentence}${nextCharToType}`)
+        setCurrentSentenceIndex(currentSentenceIndex + 1)
+      }
+    }, 100)
 
     return () => {
       clearTimeout(timeout)
     }
-  }, [typeText])
+  }, [accumulatedSentence, currentSentenceIndex, currentIndex])
 
-  return typeText
+  return accumulatedSentence
 }
