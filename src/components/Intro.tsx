@@ -1,8 +1,13 @@
 import { Container } from 'react-bootstrap'
 import { useTypingTextEffect } from '../utils/useTypingTextEffect'
+import profilePic from '../assets/profile-pic.jpeg'
 
-const TEXT_TO_TYPE = ['Lorem ipsum', 'dolor']
-// const TEXT_TO_TYPE = ['Lorem ipsum dolor', 'second sentence']
+const TEXT_TO_TYPE = [
+  'A Front-End Developer 💻',
+  'Causal Photographer 📷',
+  'Snowboarding Enthusiastic 🏂',
+  'Video Game Addic 🤓',
+]
 
 export default function Intro(): JSX.Element {
   const typingTextEffect = useTypingTextEffect(TEXT_TO_TYPE)
@@ -10,9 +15,9 @@ export default function Intro(): JSX.Element {
     <Container fluid id="section-1" className="px-4 py-5 text-center">
       <div className="col-xs-6">
         <h1>Hello, This is Taiwei!</h1>
-        <div className="profile-pic"></div>
-        {/* <img src="~/src/assets/profile-pic.jpeg" alt="test" /> */}
-        <p>A web developer and probably a video game addic</p>
+        <div className="profile-pic">
+          <img src={profilePic} />
+        </div>
         <div className="blinking-cursor">{typingTextEffect}</div>
       </div>
     </Container>

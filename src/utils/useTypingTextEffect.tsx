@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+const DELAY_BETWEEN_TYPE = 80
+
 export const useTypingTextEffect = (sentences: string[]): string => {
   const [accumulatedSentence, setAccumulatedSentence] = useState<string>('')
   const [currentIndex, setCurrentIndex] = useState<number>(0)
@@ -27,7 +29,7 @@ export const useTypingTextEffect = (sentences: string[]): string => {
         setAccumulatedSentence(`${accumulatedSentence}${nextCharToType}`)
         setCurrentSentenceIndex(currentSentenceIndex + 1)
       }
-    }, 100)
+    }, DELAY_BETWEEN_TYPE)
 
     return () => {
       clearTimeout(timeout)

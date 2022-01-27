@@ -2,11 +2,15 @@ import { Container, Navbar, Nav } from 'react-bootstrap'
 
 export default function MyNavbar(): JSX.Element {
   return (
-    <Navbar bg="light" variant="light">
-      <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+    <Navbar className="my-navbar">
+      <Container className="my-navbar__container">
+        <Navbar.Brand href="#home">hello world!</Navbar.Brand>
         <Nav>
-          <Nav.Link href="#home">Home</Nav.Link>
+          <Nav.Link href="#home">
+            <div>
+              <i className="bi bi-person-circle"></i>
+            </div>
+          </Nav.Link>
           <Nav.Link href="#features">Features</Nav.Link>
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
