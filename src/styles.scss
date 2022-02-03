@@ -1,11 +1,30 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import './components/sections';
 
-:root {
+:root,
+body {
+  background-color: #1c84d7;
+  color: #fcfcfc;
   font-size: 16px;
+  font-family: 'Roboto Slab', serif;
 }
 
 .App {
   font-family: sans-serif;
   text-align: center;
+}
+
+.navbar-light.my-navbar {
+  background-color: rgb(33, 150, 243);
+  color: #fcfcfc;
+  .navbar-brand {
+    color: #fcfcfc;
+  }
+  .nav-link {
+    color: #fcfcfc;
+    padding: 0 0.8rem;
+  }
+  .navbar-nav {
+    font-size: 1.3rem;
+  }
 }
