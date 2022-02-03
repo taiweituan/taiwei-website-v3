@@ -6,13 +6,24 @@ export default function MyNavbar(): JSX.Element {
       <Container className="my-navbar__container">
         <Navbar.Brand href="#home">hello world!</Navbar.Brand>
         <Nav>
-          <Nav.Link href="#home">
-            <div>
-              <i className="bi bi-person-circle"></i>
-            </div>
+          <Nav.Link
+            href="https://github.com/taiweituan/personal-website-v3"
+            target="_blank"
+          >
+            <i className="bi bi-github"></i>
           </Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Nav.Link
+            href="https://www.linkedin.com/in/taiweituan/"
+            target="_blank"
+          >
+            <i className="bi bi-linkedin"></i>
+          </Nav.Link>
+          <Nav.Link
+            href="https://stackoverflow.com/users/4549166"
+            target="_blank"
+          >
+            <i className="bi bi-stack-overflow"></i>
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
