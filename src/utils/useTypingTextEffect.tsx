@@ -1,14 +1,41 @@
 import { useEffect, useState } from 'react'
 
-const DELAY_BETWEEN_TYPE = 80
+enum TYPING_STATUS {
+  INITIALIZING = 'initializing',
+  TYPING = 'typing',
+  FINSIHED = 'finished',
+}
+
+const INITIALIZING_TIMER = 2000
+const DELAY_BETWEEN_TYPE = 75
 
 export const useTypingTextEffect = (sentences: string[]): string => {
+  const [typingStatus, setTypingStatus] = useState(TYPING_STATUS.INITIALIZING)
   const [accumulatedSentence, setAccumulatedSentence] = useState<string>('')
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0)
 
   useEffect(() => {
-    if (currentIndex === sentences.length) return
+    if (typingStatus !== TYPING_STATUS.INITIALIZING) {
+      return
+    }
+
+    const typingStatusTimeout = setTimeout(() => {
+      setTypingStatus(TYPING_STATUS.TYPING)
+    }, INITIALIZING_TIMER)
+
+    return () => {
+      clearTimeout(typingStatusTimeout)
+    }
+  }, [typingStatus])
+
+  useEffect(() => {
+    if (
+      currentIndex === sentences.length ||
+      typingStatus !== TYPING_STATUS.TYPING
+    ) {
+      return
+    }
 
     const currentSetence = sentences[currentIndex]
     const nextCharToType = currentSetence[currentSentenceIndex]
@@ -29,12 +56,16 @@ export const useTypingTextEffect = (sentences: string[]): string => {
         setAccumulatedSentence(`${accumulatedSentence}${nextCharToType}`)
         setCurrentSentenceIndex(currentSentenceIndex + 1)
       }
+
+      if (isEndReached) {
+        setTypingStatus(TYPING_STATUS.FINSIHED)
+      }
     }, DELAY_BETWEEN_TYPE)
 
     return () => {
       clearTimeout(timeout)
     }
-  }, [accumulatedSentence, currentSentenceIndex, currentIndex])
+  }, [accumulatedSentence, currentSentenceIndex, currentIndex, typingStatus])
 
   return accumulatedSentence
 }
