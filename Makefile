@@ -1,3 +1,5 @@
+.DEFAULT_GOAL := dev
+
 PROJECT=personal-website-v3
 COMPOSE=docker-compose --file ./docker-compose.yml
 COMPOSE_PROD=docker-compose --file ./docker-compose.prod.yml
@@ -5,6 +7,9 @@ COMPOSE_PROD=docker-compose --file ./docker-compose.prod.yml
 ##### Development #####
 test:
 	echo 'make file invoked!'
+
+dev: build
+	$(COMPOSE) up
 
 pull:
 	$(COMPOSE) pull
