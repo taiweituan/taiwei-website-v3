@@ -1,0 +1,1 @@
+export const FUN_CHANCE = 5 // 5%
