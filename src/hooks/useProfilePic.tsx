@@ -5,12 +5,11 @@ import profilePic from '../assets/profile-pic.jpeg'
 import profilePicMe from '../assets/profile-pic_me.jpeg'
 import profilePicMeMe from '../assets/profile-pic_meme.jpeg'
 
-const useProfilePic = () => {
+const useProfilePic = ():string => {
   const [pic, setPic] = useState(profilePicMe)
 
   useEffect(() => {
     const randomNumber = randomChanceGenerator()
-    console.log(randomNumber, FUN_CHANCE)
 
     if (randomNumber >= FUN_CHANCE) {
       setPic(profilePicMe)
