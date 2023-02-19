@@ -1,13 +1,5 @@
 import { Container, Navbar, Nav } from 'react-bootstrap'
-
-/**
- * [href, bootstrap icon name: https://icons.getbootstrap.com/]
- */
-const LINKS = [
-  ['https://github.com/taiweituan', 'github'],
-  ['https://www.linkedin.com/in/taiweituan/', 'linkedin'],
-  ['https://stackoverflow.com/users/4549166', 'stack-overflow'],
-]
+import { LINKS } from '../utils/constants'
 
 export default function MyNavbar(): JSX.Element {
   return (
